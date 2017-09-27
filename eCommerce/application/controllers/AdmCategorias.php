@@ -39,8 +39,8 @@
 
         public function altCategoria(){
             $this->load->library('form_validation');
-            $this->form_validation->set_rules('titulo', 'Título', 'required|min_length[5]');
-            $this->form_validation->set_rules('descricao', 'Descricao', 'required|min_length[20]');
+            $this->form_validation->set_rules('titulo', 'Título', 'required');
+            $this->form_validation->set_rules('descricao', 'Descricao', 'required');
             if( !$this->form_validation->run()){
                 $this->verCategoria( $this->input->post('id'));
             }
@@ -65,6 +65,9 @@
                 redirect("admCategorias");
             }
             else
+                echo '<script language = "javascript">
+                            alert("Esta categoria ainda tem produtos");
+                      </script>';
                 $this->index();
         }
 
